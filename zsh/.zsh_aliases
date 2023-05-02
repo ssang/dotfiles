@@ -1,0 +1,20 @@
+typeset -A cd_aliases
+cd_aliases=(
+  [cc]="$HOME/Code"
+  [repo]="$HOME/Code/Repositories"
+  [site]="$HOME/Code/Sites"
+  [theme]="$HOME/Code/Themes"
+  [crew]="$HOME/Code/Crew"
+)
+
+for k in "${(@k)cd_aliases}"; do
+  function $k() {
+    cd "$cd_aliases[$0]/$1"
+  }
+
+  function _$k() {
+    ((CURRENT == 2)) && _files -/ -W $cd_aliases[${0:1}]
+  }
+
+  compdef _$k $k
+done

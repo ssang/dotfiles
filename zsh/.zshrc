@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/rlee/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
     PATH="$HOME/.config/composer/vendor/bin:$PATH"
@@ -80,7 +80,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose)
+plugins=(git docker docker-compose sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,17 +118,20 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-#eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 # source "/etc/profile.d/rvm.sh"
 
 # bun completions
-[ -s "/home/rlee/.bun/_bun" ] && source "/home/rlee/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
-export BUN_INSTALL="/home/rlee/.bun"
+export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
+# eval "$(~/.rbenv/bin/rbenv init - zsh)"
+
+# bun completions
+[ -s "/home/rslee/.bun/_bun" ] && source "/home/rslee/.bun/_bun"
