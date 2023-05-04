@@ -18,3 +18,5 @@ for k in "${(@k)cd_aliases}"; do
 
   compdef _$k $k
 done
+
+alias ex="explorer.exe ."
