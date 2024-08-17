@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export BROWSER=host_chrome
 
 if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
     PATH="$HOME/.config/composer/vendor/bin:$PATH"
@@ -10,6 +11,10 @@ fi
 
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "/snap/bin" ] ; then
+    PATH="/snap/bin:$PATH"
 fi
 
 # eval "$(rbenv init -)"

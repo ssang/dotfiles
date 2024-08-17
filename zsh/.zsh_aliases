@@ -19,4 +19,29 @@ for k in "${(@k)cd_aliases}"; do
   compdef _$k $k
 done
 
+alias vim=nvim
+
 alias ex="explorer.exe ."
+
+alias shop="shopify"
+
+flywheelSync() {
+    echo -e "\e[30;101mPushing changes to \e[1;4m$2\e \e[0m"
+    if [[ "$1" == "crew" ]]; then
+        if [ -z $3 ]; then
+            rsync -avz --exclude node_modules --exclude .git --delete ./ team+crew-marketing-partners+$2@ssh.getflywheel.com:/www/wp-content/themes/$2
+        else
+            rsync -avz --exclude node_modules --exclude .git --delete ./ team+crew-marketing-partners+$2@ssh.getflywheel.com:/www/wp-content/themes/$3
+        fi
+    else
+        rsync -avz --exclude node_modules --exclude .git --delete ./ $1:/www/wp-content/themes/$2
+    fi
+}
+
+alias flysync="flywheelSync"
+
+pushCommitToDD() {
+    git commit -m "$1 \n [#$2 status:Ready for Retest]"
+}
+
+alias gitdd="pushCommitToDD"
