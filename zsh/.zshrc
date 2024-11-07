@@ -122,6 +122,7 @@ export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval "$(rbenv init -)"
 # source "/etc/profile.d/rvm.sh"
@@ -140,3 +141,5 @@ eval "$(starship init zsh)"
 
 # bun completions
 [ -s "/home/rslee/.bun/_bun" ] && source "/home/rslee/.bun/_bun"
+export PATH="/home/rslee/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/rslee/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
