@@ -1,6 +1,12 @@
-require('neoscroll').setup()
+neoscroll = require('neoscroll')
+neoscroll.setup()
 
-require('neoscroll.config').set_mappings({
-  ['<C-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '50' } },
-  ['<C-d>'] = { 'scroll', { 'vim.wo.scroll', 'true', '50' } },
-})
+local keymap = {
+  ['<C-u>'] = function() neoscroll.scroll('-vim.wo.scroll', { move_cursor=true; duration=50 }) end;
+  ['<C-d>'] = function() neoscroll.scroll('vim.wo.scroll', { move_cursor=true; duration=50 }) end;
+}
+
+local modes = { 'n', 'v', 'x' }
+for key, func in pairs(keymap) do
+  vim.keymap.set(modes, key, func)
+end
