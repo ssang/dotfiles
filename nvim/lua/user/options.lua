@@ -29,7 +29,7 @@ vim.opt.fillchars:append({ eob = ' ' }) -- remove the ~ from end of buffer
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
-vim.opt.clipboard = 'unnamedplus'
+-- vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.confirm = true
 

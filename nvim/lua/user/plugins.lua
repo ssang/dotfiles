@@ -97,21 +97,21 @@ use({
 use({
   'karb94/neoscroll.nvim',
   config = function()
-    require('user.plugins.neoscroll')
+    require('user/plugins/neoscroll')
   end,
 })
 
 use({
   'AndrewRadev/splitjoin.vim',
   config = function()
-    require('user.plugins.splitjoin')
+    require('user/plugins/splitjoin')
   end,
 })
 
 use({
   'sickill/vim-pasta',
   config = function()
-    require('user.plugins.pasta')
+    require('user/plugins/pasta')
   end,
 })
 
@@ -129,7 +129,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> 
+    autocmd BufWritePost plugins/lua source <afile> 
   augroup end
 ]])
 
@@ -137,7 +137,7 @@ use({
   'nvim-telescope/telescope.nvim',
   requires = {
     { 'nvim-lua/plenary.nvim' },
-    { 'kyazdani42/nvim-web-devicons' },
+    { 'nvim-tree/nvim-web-devicons' },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },
   },
@@ -147,26 +147,56 @@ use({
 })
 
 use({
-  'kyazdani42/nvim-tree.lua',
-  requires = 'kyazdani42/nvim-web-devicons',
+  'nvim-tree/nvim-tree.lua',
+  requires = {'nvim-tree/nvim-web-devicons', opt = false},
   config = function()
-    require('user.plugins.nvim-tree')
+    require('user/plugins/nvim-tree')
   end,
 })
 
 use({
   'nvim-lualine/lualine.nvim',
-  requires = 'kyazdani42/nvim-web-devicons',
+  requires = {'nvim-tree/nvim-web-devicons', opt = false},
   config = function()
-    require('user.plugins.lualine')
+    require('user/plugins/lualine')
   end,
 })
 
 use({
   'akinsho/bufferline.nvim',
-  requires = 'kyazdani42/nvim-web-devicons',
+  requires = {'nvim-tree/nvim-web-devicons', opt = false},
   after = 'rose-pine',
   config = function()
-    require('user.plugins.bufferline')
+    require('user/plugins/bufferline')
   end,
+})
+
+use({
+    'lukas-reineke/indent-blankline.nvim',
+    config = function ()
+        require('user/plugins/indent-blankline')
+    end,
+})
+
+-- Add a dashboard.
+use({
+  'nvimdev/dashboard-nvim',
+  requires = {'nvim-tree/nvim-web-devicons', opt = false},
+  config = function()
+    require('user/plugins/dashboard-nvim')
+  end
+})
+
+-- Git Integration
+use({
+    'lewis6991/gitsigns.nvim',
+    config = function()
+        require('gitsigns').setup()
+        vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
+        vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
+        vim.keymap.set('n', 'gs', ':Gitsigns stage_hunk<CR>')
+        vim.keymap.set('n', 'gS', ':Gitsigns undo_stage_hunk<CR>')
+        vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
+        vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
+    end
 })
