@@ -23,7 +23,7 @@ fi
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=""
+ZSH_THEME="dracula"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -117,14 +117,15 @@ alias ohmyzsh="code ~/.oh-my-zsh"
 
 source ~/.zsh_aliases
 
-export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
+# export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 # source "/etc/profile.d/rvm.sh"
 
 # bun completions
@@ -134,8 +135,8 @@ eval "$(rbenv init -)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+# eval "$(zoxide init zsh)"
+# eval "$(starship init zsh)"
 
 # eval "$(~/.rbenv/bin/rbenv init - zsh)"
 

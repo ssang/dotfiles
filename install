@@ -11,6 +11,11 @@ ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
 rm -rf $HOME/.config/starship.toml
 ln -s $DOTFILES/starship/starship.toml $HOME/.config/starship.toml
 
+rm -rf $HOME/.wezterm
+rm -rf $HOME/.wezterm.lua
+ln -s $DOTFILES/wezterm/files $HOME/.wezterm
+ln -s $DOTFILES/wezterm/.wezterm.lua $HOME/.wezterm.lua
+
 mkdir -p $HOME/.local/bin
 
 rm -rf $HOME/.local/bin/t
@@ -23,4 +28,6 @@ rm -rf $HOME/.zshrc
 ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
 
 rm -rf $HOME/.zsh_aliases
+rm -rf $HOME/.oh-my-zsh/themes
 ln -s $DOTFILES/zsh/.zsh_aliases $HOME/.zsh_aliases
+ln -s $DOTFILES/zsh/themes $HOME/.oh-my-zsh/themes
